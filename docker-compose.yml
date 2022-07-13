@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  rabbitmq:
+    image: 'rabbitmq:3-management'
+    container_name: rabbitmq
+    ports:
+      - '15672:15672'
+      - '5672:5672'
+  rabbitmq_worker:
+    build: rabbitmq_worker
+    container_name: rabbitmq_worker
+    volumes:
+      - ./rabbitmq_worker:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always 
+  server:
+    build: server
+    container_name: server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/app
+    restart: always
+  
+
+  
