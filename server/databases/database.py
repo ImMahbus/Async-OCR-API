@@ -1,7 +1,6 @@
 from pymongo import MongoClient
 
-client = MongoClient(
-    'mongodb+srv://admin:admin@ocrdb.lhzdpcs.mongodb.net/?retryWrites=true&w=majority')
+client = MongoClient()
 
 db = client.my_database
 recognized_text_db = db.recognized_text_db
